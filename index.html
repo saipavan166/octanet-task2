@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech To-Do List with Date & Time</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="todo-container">
+        <h1>Tech To-Do List</h1>
+        <ul class="todo-list">
+            <li>
+                <input type="checkbox" id="task1">
+                <label for="task1">Complete Project Report</label>
+                <span class="task-datetime">Due: 2024-07-30 15:00</span>
+            </li>
+            <li>
+                <input type="checkbox" id="task2">
+                <label for="task2">Update Software</label>
+                <span class="task-datetime">Due: 2024-08-01 10:00</span>
+            </li>
+            <li>
+                <input type="checkbox" id="task3">
+                <label for="task3">Team Meeting</label>
+                <span class="task-datetime">Due: 2024-08-02 14:00</span>
+            </li>
+            <li>
+                <input type="checkbox" id="task4">
+                <label for="task4">Prepare Presentation</label>
+                <span class="task-datetime">Due: 2024-08-03 12:00</span>
+            </li>
+        </ul>
+        <div class="input-group">
+            <input type="text" id="new-task" placeholder="Add a new task">
+            <input type="date" id="due-date" placeholder="Due Date">
+            <input type="time" id="due-time" placeholder="Due Time">
+            <button class="btn-add">Add Task</button>
+        </div>
+    </div>
+    <script>
+        document.querySelector('.btn-add').addEventListener('click', function() {
+            var taskInput = document.getElementById('new-task');
+            var dateInput = document.getElementById('due-date');
+            var timeInput = document.getElementById('due-time');
+            
+            var taskText = taskInput.value.trim();
+            var dueDate = dateInput.value;
+            var dueTime = timeInput.value;
+
+            if (taskText && dueDate && dueTime) {
+                var newItem = document.createElement('li');
+                newItem.innerHTML = `<input type="checkbox"><label>${taskText}</label><span class="task-datetime">Due: ${dueDate} ${dueTime}</span>`;
+                document.querySelector('.todo-list').appendChild(newItem);
+                taskInput.value = '';
+                dateInput.value = '';
+                timeInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
